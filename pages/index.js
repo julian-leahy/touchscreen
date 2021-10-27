@@ -24,7 +24,7 @@ export default function Home() {
     {
       onPinch: ({ movement }) => {
         if (isZoomed && movement[0] < 0.3) {
-          noZoom;
+          noZoom();
         } else {
           zoom();
         }
