@@ -39,6 +39,9 @@ export default function Home() {
           zoom();
         }
       },
+      onPinchEnd: ({ movement }) => {
+        console.log(movement[0]);
+      },
     },
     { target: ref }
   );
