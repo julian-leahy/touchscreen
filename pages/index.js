@@ -25,6 +25,9 @@ export default function Home() {
       <div
         ref={ref}
         className={`${isZoomed ? styles.withZoom : styles.noZoom}`}
+        onDoubleClick={() => {
+          setIsZoomed(true);
+        }}
       >
         <TransformWrapper ref={zoomRef} disabled={!isZoomed}>
           <TransformComponent>
