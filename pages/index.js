@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 import { createUseGesture, pinchAction } from "@use-gesture/react";
 import styles from "@/styles/Home.module.css";
@@ -10,6 +10,16 @@ export default function Home() {
 
   const zoomRef = useRef(null);
   const ref = useRef(null);
+
+  useEffect(() => {
+    const handler = (e) => e.preventDefault();
+    document.addEventListener("gesturestart", handler);
+    document.addEventListener("gesturechange", handler);
+    return () => {
+      document.removeEventListener("gesturestart", handler);
+      document.removeEventListener("gesturechange", handler);
+    };
+  }, []);
 
   const zoom = () => {
     setIsZoomed(true);
