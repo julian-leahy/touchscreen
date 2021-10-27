@@ -11,10 +11,19 @@ export default function Home() {
   const zoomRef = useRef(null);
   const ref = useRef(null);
 
+  const zoom = () => {
+    setIsZoomed(true);
+  };
+
+  const noZoom = () => {
+    zoomRef.current.resetTransform();
+    setIsZoomed(false);
+  };
+
   useGesture(
     {
-      onPinch: () => {
-        setIsZoomed(true);
+      onPinch: (movement) => {
+        movement[0] < 0.8 ? noZoom() : zoom();
       },
     },
     { target: ref }
