@@ -22,8 +22,12 @@ export default function Home() {
 
   useGesture(
     {
-      onPinch: (movement) => {
-        movement[0] < 0.8 ? noZoom() : zoom();
+      onPinch: ({ movement }) => {
+        if (isZoomed && movement[0] < 0.3) {
+          noZoom;
+        } else {
+          zoom();
+        }
       },
     },
     { target: ref }
